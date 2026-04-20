@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ndlovu Websites | Web Design Ad</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #000000;
+      --panel: rgba(15, 15, 15, 0.95);
+      --text: #f7f2ea;
+      --muted: #aaa;
+      --accent: #f4c43d;
+      --accent-soft: rgba(244, 196, 61, 0.16);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: radial-gradient(circle at top, rgba(244, 196, 61, 0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(244, 196, 61, 0.04), transparent 18%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      width: min(1100px, 100%);
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: floatIn 0.8s ease-out forwards;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      padding: 3rem;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(36px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 220px;
+      height: 220px;
+      top: -40px;
+      left: -40px;
+      background: rgba(244, 196, 61, 0.20);
+    }
+
+    .hero::after {
+      width: 260px;
+      height: 260px;
+      bottom: -60px;
+      right: -60px;
+      background: rgba(244, 196, 61, 0.12);
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      animation: slideLeft 0.9s ease-out forwards;
+    }
+
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(-24px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 105px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-wrap:hover img {
+      transform: scale(1.03);
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 4vw, 4rem);
+      line-height: 0.98;
+    }
+
+    .subtitle {
+      max-width: 40rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 1.35rem 1.4rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      gap: 0.5rem;
+      animation: pop 1s ease-out both;
+    }
+
+    .stat strong {
+      font-size: 1.4rem;
+      color: #fff;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: floatHero 1.2s ease-out forwards;
+    }
+
+    @keyframes floatHero {
+      from { opacity: 0; transform: translateY(24px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .hero-box {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      text-align: center;
+      color: var(--text);
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .hero-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(244, 196, 61, 0.25), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(244, 196, 61, 0.16), transparent 20%);
+      pointer-events: none;
+    }
+
+    .hero-box p {
+      position: relative;
+      z-index: 1;
+      max-width: 28rem;
+      margin: 0 auto;
+      color: #ddd;
+    }
+
+    .hero-box .badge {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--accent);
+      font-weight: 700;
+      margin-top: 1rem;
+      letter-spacing: 0.04em;
+      animation: pulseBadge 2.2s ease-in-out infinite;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .hero-photo-mini {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(244, 196, 61, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    .hero-photo-mini img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-founder {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .hero-founder .name {
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .hero-founder .title {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .hero-photo-mini {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(244, 196, 61, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-photo-mini img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-founder {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .hero-founder .name {
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .hero-founder .title {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    @keyframes pulseBadge {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.04); opacity: 0.88; }
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .hero-photo-mini {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(244, 196, 61, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    .hero-photo-mini img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-founder {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .hero-founder .name {
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .hero-founder .title {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      padding: 0 3rem 3rem;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 1.4rem;
+      transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .info-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(244,196,61,0.35);
+    }
+
+    .info-card h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .contact-panel {
+      background: rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 1.75rem 3rem 2rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text);
+    }
+
+    .founder-photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(244, 196, 61, 0.4);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .founder-info {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .founder-details strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: var(--accent);
+    }
+
+    .founder-details span {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-panel strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-block {
+      min-width: 220px;
+    }
+
+    .link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: 1rem 1.8rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f4c43d, #ffd15b);
+      color: #111;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 20px 45px rgba(244, 196, 61, 0.22);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 0.5rem;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 26px 55px rgba(244, 196, 61, 0.3);
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="card">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="logo-wrap">
+          <img src="NDLOVU.jpeg" alt="Ndlovu Websites logo" />
+        </div>
+        <span class="eyebrow">Ndlovu Websites</span>
+        <h1>Web design made simple, powerful and polished.</h1>
+        <p class="subtitle">Choose from ready-made web templates, then let our team edit and host your site exactly the way you want it. Perfect for startups, small businesses, portfolios, and modern brands.</p>
+
+        <div class="stats">
+          <div class="stat" style="animation-delay: 0.15s;">
+            <strong>From R3000 - R15000</strong>
+            <span>One-time website creation</span>
+          </div>
+          <div class="stat" style="animation-delay: 0.3s;">
+            <strong>R250 - R1000</strong>
+            <span>Monthly support, edits, hosting & updates</span>
+          </div>
+        </div>
+        <a class="cta-button" href="mailto:ndlovuwebsites@gmail.com">Book your website launch</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-box">
+          <div class="badge">Founded 2020</div>          <div class="hero-badge-row">
+            <div class="hero-photo-mini">
+              <img src="me.png" alt="Andile Ndlovu" />
+            </div>
+            <div class="hero-founder">
+              <span class="name">Andile Ndlovu</span>
+              <span class="title">Founder & Lead Developer</span>
+            </div>
+          </div>          <p>We build and host websites like <a class="link" href="https://synergistic.org.za/" target="_blank" rel="noreferrer">synergistic.org.za</a>. Pick a web template, give us your direction, and we’ll tailor the whole site to your brand.</p>
+          <div class="badge" style="margin-top:1.4rem; background: rgba(255,255,255,0.12); color:#fff;">Launch ready in days</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-grid">
+      <div class="info-card">
+        <h3>Choose your template</h3>
+        <p>Quick launch with professional templates designed for clean visuals, mobile responsiveness, and brand clarity.</p>
+      </div>
+      <div class="info-card">
+        <h3>Custom edits by our team</h3>
+        <p>Your site can be updated to match your style, messaging, colors, and business goals.</p>
+      </div>
+      <div class="info-card">
+        <h3>From concept to hosting</h3>
+        <p>Complete service: design, deploy, host, and support so you can stay focused on your business.</p>
+      </div>
+    </section>
+
+    <section class="contact-panel">
+      <div class="founder-info">
+        <div class="founder-photo">
+          <img src="me.png" alt="Andile Ndlovu, Founder" />
+        </div>
+        <div class="founder-details">
+          <strong>Andile Ndlovu</strong>
+          <span>Founder, Ndlovu Websites</span>
+        </div>
+      </div>
+      <div class="contact-block">
+        <strong>Email</strong>
+        <a class="link" href="mailto:ndlovuwebsites@gmail.com">ndlovuwebsites@gmail.com</a>
+      </div>
+      <div class="contact-block">
+        <strong>Phone</strong>
+        <a class="link" href="tel:0834656541">083 465 6541</a>
+      </div>
+    </section>
+  </article>
+</body>
+</html>
